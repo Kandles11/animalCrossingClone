@@ -9,3 +9,5 @@ characterImg.onload = function() {
   context.drawImage(characterImg, 20, 20, 100, 100)
 }
 characterImg.src = 'assets/char.png'
+
+test
