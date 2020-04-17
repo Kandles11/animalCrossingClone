@@ -25,10 +25,11 @@ characterImg.onload = function() {
 var grassImage = new Image();
 grassImage.onload = function() {
   for (let i=0; i<map.length; i++) {
-    console.log("test")
+    console.log("i ="+ i)
     for (let j=0; j<map[i].length; j++) {
+      console.log("j ="+j)
       if (map[i][j] == 1) {
-        context.drawImage(grassImage,j*10 + 50,i*10 + 50);
+        context.drawImage(grassImage,i * 50,j * 50);
     }
     }
   }
