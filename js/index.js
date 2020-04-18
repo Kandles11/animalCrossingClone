@@ -17,22 +17,35 @@ var map = [
   [1,1,1,1,1,1,1,1,1,1]
 ];
 
-var characterImg = new Image();
-characterImg.onload = function() {
-  context.drawImage(characterImg, 20, 20)
-}
 
-var grassImage = new Image();
-grassImage.onload = function() {
+
+const imageURLS = ['assets/char.png', 'assets/grass.png']
+var images = [];
+var imageCount = 0;
+
+function allLoaded(){
+  //draw grass
   for (let i=0; i<map.length; i++) {
     console.log("i ="+ i)
     for (let j=0; j<map[i].length; j++) {
       console.log("j ="+j)
       if (map[i][j] == 1) {
-        context.drawImage(grassImage,i * 50,j * 50);
-    }
+        context.drawImage(images[1],i * 50,j * 50);
+      }
     }
   }
+  //draw character
+  context.drawImage(images[0], 20, 20)
 }
-characterImg.src = 'assets/char.png'
-grassImage.src = 'assets/grass.png'
+
+imageURLS.forEach(src => {
+  const image = new Image();
+  image.src = src;
+  image.onload = ()=>{
+    imageCount += 1;
+    if(imageCount === imageURLS.length){
+      allLoaded();
+    }
+  }
+  images.push(image);
+});
